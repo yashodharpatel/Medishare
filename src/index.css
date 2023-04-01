@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+button.btn-primary {
+  @apply text-white mb-5 bg-primary-dark hover:bg-primary-light font-medium rounded-lg text-sm px-4 py-2;
+}
+
+img.backgroundimage {
+  background-image: linear-gradient(rgba(78, 180, 214, 0.767), rgba(78, 180, 214, 0.767)), 
+  url("../src/assets/bg.jpg");
+}
+
+button.btn-primary {
+  background-color: #4eb5d6;
+}
+
+button.btn-primary:hover {
+  background-color: #43b9e1;
+}
+
+.bg-gradient-to-r {
+  background-image: linear-gradient(rgba(78, 180, 214, 0.767), rgba(78, 180, 214, 0.767));
+}
