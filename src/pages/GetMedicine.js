@@ -10,6 +10,7 @@ import { elements } from "chart.js";
 
 const GetMedicine = ({ org }) => {
   const [meds, setMeds] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const ngo = database.ref("ngos");
@@ -39,11 +40,36 @@ const GetMedicine = ({ org }) => {
   return (
     <div>
       <Navbar />
+      <div className="flex items-center justify-center w-full my-6 mx-8">
+        <i className="fa fa-search" />
+        <input
+          type="text"
+          className="rounded-l border border-purple w-full p-3"
+          style={{ outline: "none" }}
+          placeholder="Search by names of medicines"
+          onChange={(event) => {
+            setSearch(event.target.value);
+          }}
+        />
+      </div>
       <div className="grid md:grid-cols-3 sm:grid-cols-1 2xl:grid-cols-4 justify-evenly px-8 pt-8 ">
-        {
-          meds.map((element, index) => {
-            return (
-            element.map((medicine, index) => {
+        {meds
+          ?.map((element) => {
+            return element?.filter((medicine, index) => {
+              if (search === " ") {
+                return medicine;
+              } else if (
+                Object.values(medicine.name)
+                  .join("")
+                  .toLowerCase()
+                  .includes(search.toLowerCase())
+              ) {
+                return medicine;
+              }
+            });
+          })
+          ?.map((element, index) => {
+            return element?.map((medicine, index) => {
               return (
                 <MedicineCard
                   name={medicine.name}
@@ -56,11 +82,12 @@ const GetMedicine = ({ org }) => {
                     //   : img
                     medicine.picture
                   }
+                  desc={medicine.desc}
                   key={index}
                   // oid={element._id}
                 />
               );
-            }) )
+            });
           })}
       </div>
     </div>

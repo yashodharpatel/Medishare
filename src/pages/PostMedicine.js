@@ -1,10 +1,5 @@
-// import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-// import bg from "../assets/bg.jpg";
-import donatemedicine from "../assets/donate-medicine.gif";
-// import axios from "axios";
-
-import React, { useState, useEffect, Profiler, useId } from "react";
 import { database, storage } from "../firebase";
 import { useAuth } from "../Contexts/Authcontext";
 
@@ -43,13 +38,13 @@ const PostMedicine = () => {
 
     try {
       storage
-        .ref(`/pictures/${currentUserId}/${medicineName}`)
+        .ref(`/pictures/eUtpuEjeBJY4jvxYJtWMfA0Aten1/${medicineName}`)
         .put(blob)
         .on("state_changed", () => {
           // Getting Download Link
           storage
             .ref("pictures")
-            .child(currentUserId)
+            .child("eUtpuEjeBJY4jvxYJtWMfA0Aten1")
             .child(medicineName)
             .getDownloadURL()
             .then((url) => {
@@ -66,11 +61,6 @@ const PostMedicine = () => {
               setmedicineDesc("");
             });
         });
-
-        if (userId !== "" && medicines.length !== 0) {
-          database.ref("ngos/" + currentUserId).update({ medicines: medicines });
-          medicines = [];
-        }
     } catch {
       console.log("Problem occured");
     }
@@ -109,10 +99,9 @@ const PostMedicine = () => {
   }, []);
 
   const submitMedicines = () => {
-    submit();
-    if (userId !== "" && medicines.length !== 0) {
-      database.ref("ngos/" + currentUserId).update({ medicines: medicines });
-      medicines = [];
+    if (medicines.length !== 0) {
+      database.ref("ngos/" + "eUtpuEjeBJY4jvxYJtWMfA0Aten1").update({ medicines: medicines });
+      // medicines = [];
     }
   };
 
@@ -155,110 +144,144 @@ const PostMedicine = () => {
   return (
     <div>
       <Navbar />
-      <div className="mx-auto bg-gradient-to-r from-primary-dark to-primary-light min-h-screen rounded-xl w-3/4">
+      <div className="mx-auto from-primary-dark to-primary-light rounded-xl">
         <div className="text-center font-bold text-3xl p-2 pt-6">
           Donate Medicines
         </div>
-        <div className="flex justify-center space-x-4 ">
-          {/* <img src={bg} alt="img" className='backgroundimage relative opacity-50 rounded-lg ' /> */}
-          <div className="rounded-lg flex">
-            <img src={donatemedicine} alt="image" className="-translate-y-4" />
-            <div className="flex flex-col min-w-full min-h-full mb-7">
+        <div className="flex justify-center space-x-4 pt-4">
+          {/* <img src={donatemedicine} alt="image" className="-translate-y-4" /> */}
+          <div className="rounded-lg flex bg-gradient-to-r p-4 w-4/12">
+            <div className="flex flex-col min-w-full min-h-full">
+              <div className="text-center font-bold text-2xl p-2 pt-6">
+                Add a Medicine
+              </div>
               <form onSubmit={submit}>
-              <div className="py-2 px-4">
-                <label className="font-medium text-lg">Medicine Name</label>
-                <div className="flex flex-row flex-wrap justify-between">
-                  <input
-                    type="text"
-                    name="commonName"
-                    className="rounded-xl border border-purple w-96 p-1"
-                    value={medicineName}
-                    placeholder="Medicine Name"
-                    onChange={(e) => setmedicineName(e.target.value)}
-                  />
+                <div className="py-2 px-4">
+                  <label className="font-medium text-lg">Medicine Name</label>
+                  <div className="flex flex-row flex-wrap justify-between">
+                    <input
+                      type="text"
+                      name="commonName"
+                      className="rounded-xl border border-purple w-96 p-1"
+                      value={medicineName}
+                      placeholder="Medicine Name"
+                      onChange={(e) => setmedicineName(e.target.value)}
+                    />
+                  </div>
                 </div>
-              </div>
 
-              <div className="py-2 px-4">
-                <label className="font-medium text-lg"> Tablet Count</label>
-                <div className="flex flex-row flex-wrap justify-between">
-                  <input
-                    type="number"
-                    name="quantity"
-                    className="rounded-xl border border-purple w-96 p-1"
-                    value={tabletCount}
-                    placeholder="Tablet Count"
-                    onChange={(e) => settabletCount(e.target.value)}
-                  />
+                <div className="py-2 px-4">
+                  <label className="font-medium text-lg">Tablet Count</label>
+                  <div className="flex flex-row flex-wrap justify-between">
+                    <input
+                      type="number"
+                      name="quantity"
+                      className="rounded-xl border border-purple w-96 p-1"
+                      value={tabletCount}
+                      placeholder="Tablet Count"
+                      onChange={(e) => settabletCount(e.target.value)}
+                    />
+                  </div>
                 </div>
-              </div>
 
-              <div className="py-2 px-4">
-                <label className="font-medium text-lg">Expiry Date</label>
-                <div className="flex flex-row flex-wrap justify-between">
-                  <input
-                    type="date"
-                    name="expiry_date"
-                    className="rounded-xl border border-purple w-96 p-1"
-                    value={expiryDate}
-                    placeholder="Expiry Date"
-                    onChange={(e) => setexpiryDate(e.target.value)}
-                  />
+                <div className="py-2 px-4">
+                  <label className="font-medium text-lg">Expiry Date</label>
+                  <div className="flex flex-row flex-wrap justify-between">
+                    <input
+                      type="date"
+                      name="expiry_date"
+                      className="rounded-xl border border-purple w-96 p-1"
+                      value={expiryDate}
+                      placeholder="Expiry Date"
+                      onChange={(e) => setexpiryDate(e.target.value)}
+                    />
+                  </div>
                 </div>
-              </div>
 
-              <div className="py-2 px-4">
-                <label className="font-medium text-lg">Description</label>
-                <div className="flex flex-row flex-wrap justify-between">
-                  <input
-                    type="text"
-                    name="scientificName"
-                    className="rounded-xl border border-purple w-96 p-1"
-                    value={medicineDesc}
-                    placeholder="Description"
-                    onChange={(e) => setmedicineDesc(e.target.value)}
-                  />
+                <div className="py-2 px-4">
+                  <label className="font-medium text-lg">Description</label>
+                  <div className="flex flex-row flex-wrap justify-between">
+                    <input
+                      type="text"
+                      name="scientificName"
+                      className="rounded-xl border border-purple w-96 p-1"
+                      value={medicineDesc}
+                      placeholder="Description"
+                      onChange={(e) => setmedicineDesc(e.target.value)}
+                    />
+                  </div>
                 </div>
-              </div>
 
-              <div lassName="py-2 px-4">
-                <label className="font-medium text-lg">
-                  Picture of the medicine:
-                </label>
-                <div className="flex flex-row flex-wrap justify-between">
-                  <input
-                    type="file"
-                    accept="image/*"
-                    className="form-control"
-                    id="profile-picture"
-                    onChange={imagePreview}
-                  />
+                <div className="py-2 px-4">
+                  <label className="font-medium text-lg">
+                    Picture of the medicine:
+                  </label>
+                  <div className="flex flex-row flex-wrap justify-between">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="rounded-xl border border-purple w-96 p-1"
+                      id="profile-picture"
+                      onChange={imagePreview}
+                    />
+                  </div>
                 </div>
-              </div>
 
-              <div lassName="py-2 px-4">
-                <label className="font-medium text-lg">
-                  Select a NGO to donate medicine
-                </label>
-                <select className="p-2 mt-2 mb-3 mr-2" id="ngo-selected">
-                  {ngonames.map((x, y) => (
-                    <option value={x} key={y}>
-                      {x}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div className="py-2 px-4">
-                <button
-                  className="btn-primary"
-                  type="submit"
-                >
-                  Donate
-                </button>
-              </div>
+                <div className="py-2 px-4">
+                  <button className="btn-primary" type="submit">
+                    Add Medicine
+                  </button>
+                </div>
               </form>
             </div>
+          </div>
+
+          <div className="rounded-lg flex flex-col p-4 border border-sky-500 w-4/12">
+            <div className="text-center font-bold text-2xl p-2 pt-6">
+              Medicines List
+            </div>
+            {medicines.length === 0 ? (
+              <h4>No Medicines here yet</h4>
+            ) : (
+              medicines.map((medicine) => {
+                return (
+                  <div className="mb-3">
+                    <h4 className="font-bold" id={medicine.sno}>{medicine.name}</h4>
+                    <p>Count = {medicine.count}</p>
+                    <p>Expiry = {medicine.date}</p>
+                    <p>Description = {medicine.desc}</p>
+                    <button
+                     class="bg-red-500 hover:bg-red-700 text-white p-1 border border-red-700 rounded my-2"
+                      onClick={() => {
+                        onDelete(medicine);
+                      }}
+                    >
+                      Delete
+                    </button>
+                    <hr />
+                  </div>
+                );
+              })
+            )}
+            {medicines.length!==0 ? <>
+            <div className="mt-4">Select a NGO to donate medicine</div>
+            <select className="rounded-xl border border-purple w-100 p-1 mb-4" id="ngo-selected">
+              {ngonames.map((x, y) => (
+                <option value={x} key={y}>
+                  {x}
+                </option>
+              ))}
+            </select>
+
+            <button
+              type="submit"
+              className="btn-primary"
+              onClick={() => {
+                submitMedicines();
+              }}
+            >
+              Submit
+            </button> </>: null }
           </div>
         </div>
       </div>

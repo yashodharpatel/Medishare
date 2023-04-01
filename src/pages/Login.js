@@ -56,7 +56,14 @@ const Login = () => {
       await login(emailRef.current.value, passwordRef.current.value);
       // history.push("/dashboard/");
       // document.querySelector(".modal-backdrop").remove();
-      navigate("/clienthome");
+      if(role == "ngo") {
+      navigate("/fetchallmedicinengo");
+
+        
+      } else {
+
+        navigate("/clienthome");
+      }
     } catch {
       setError("Failed to Sign In");
     }

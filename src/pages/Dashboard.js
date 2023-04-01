@@ -18,20 +18,22 @@ const Dashboard = () => {
   return (
     <div>
       <Navbar />
-      <div className="flex justify-center my-6">
-        <div>
-          <BarChart chartData={userData} />
+      <div className="flex justify-center items-center">
+        <div className="w-full h-screen flex justify-center items-center flex-col">
+          <div className="content-center">
+            <p className="bg-gray-100">Bar Chart with Number of Expriries:</p>
+          </div>
+          <div className="w-4/5">
+            <BarChart chartData={userData} />
+          </div>
         </div>
-        <div className="content-center">
-          <p className="bg-gray-100">Bar Chart with Number of Expriries:</p>
-        </div>
-      </div>
-      <div className="flex justify-center">
-        <div>
-          <PieChart chartData={userData} />
-        </div>
-        <div className="content-center">
-          <p className="bg-gray-100">Pie Chart for Medicines:</p>
+        <div className="w-full h-screen flex justify-center items-center flex-col">
+          <div className="content-center">
+            <p className="bg-gray-100">Pie Chart for Medicines:</p>
+          </div>
+          <div className="w-3/5">
+            <PieChart chartData={userData} />
+          </div>
         </div>
       </div>
     </div>

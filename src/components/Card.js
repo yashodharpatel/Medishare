@@ -2,9 +2,9 @@ import React from 'react'
 
 const Card = (props) => {
   return (
-    <div className='rounded-md w-1/2 '>
-        <div className='font-bold text-2xl py-4'>{props.heading}</div>
-        <div>{props.description}</div>
+    <div className='rounded-md py-4 px-8'>
+        <div className='font-bold text-2xl pb-4 text-center'>{props.heading}</div>
+        <div className='text-justify'>{props.description}</div>
     </div>
   )
 }

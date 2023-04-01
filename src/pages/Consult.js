@@ -31,11 +31,12 @@ const Consult = () => {
             return (
               <DoctorCard
                 key={i}
-                image={dr2}
+                image={doctors[keyName].profile}
                 name={doctors[keyName].name}
                 city={doctors[keyName].city}
                 qualification={doctors[keyName].qualification}
                 email={doctors[keyName].email}
+                number={doctors[keyName].number}
               />
             );
           })}

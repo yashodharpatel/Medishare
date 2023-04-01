@@ -7,56 +7,56 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Rewards = () => {
-  const [points, setPoints] = useState(null);
-  const url = "http://localhost:5000";
-  const navigate = useNavigate();
+  // const [points, setPoints] = useState(null);
+  // const url = "http://localhost:5000";
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await axios.get(url + `/getRewardPoints`, {
-          headers: {
-            "auth-token": localStorage.getItem("token"),
-          },
-        });
-        setPoints(res.data.points);
-      } catch (err) {
-        alert("Error");
-        console.log(err);
-      }
-    }
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const res = await axios.get(url + `/getRewardPoints`, {
+  //         headers: {
+  //           "auth-token": localStorage.getItem("token"),
+  //         },
+  //       });
+  //       setPoints(res.data.points);
+  //     } catch (err) {
+  //       alert("Error");
+  //       console.log(err);
+  //     }
+  //   }
+  //   fetchData();
+  // }, []);
 
-  async function dec(e, pts) {
-    try {
-      const res = await axios.post(
-        url + `/claimreward`,
-        { points: pts },
-        {
-          headers: {
-            "auth-token": localStorage.getItem("token"),
-          },
-        }
-      );
-      console.log(res.data);
-    } catch (err) {
-      alert("Error");
-      console.log(err);
-    }
-  }
+  // async function dec(e, pts) {
+  //   try {
+  //     const res = await axios.post(
+  //       url + `/claimreward`,
+  //       { points: pts },
+  //       {
+  //         headers: {
+  //           "auth-token": localStorage.getItem("token"),
+  //         },
+  //       }
+  //     );
+  //     console.log(res.data);
+  //   } catch (err) {
+  //     alert("Error");
+  //     console.log(err);
+  //   }
+  // }
 
   return (
     <div>
       <Navbar />
-      {points && (
+      {/* {points && ( */}
         <div>
-          <div className="font-bold text-4xl text-center py-12">
+          {/* <div className="font-bold text-4xl text-center py-12">
             Your Rewards {points}
-          </div>
+          </div> */}
           <div
             className="grid md:grid-cols-3 sm:grid-cols-1 2xl:grid-cols-4 justify-evenly px-8 mb-16 space-x-12"
-            onClick={(e) => dec(e, 50)}
+            // onClick={(e) => dec(e, 50)}
           >
             <div className="bg-primary-gray rounded-lg overflow-hidden shadow-lg">
               <img src={Amazon} alt="Company Logo" className="h-48 w-full" />
@@ -73,7 +73,7 @@ const Rewards = () => {
 
             <div
               className="bg-primary-gray rounded-lg overflow-hidden shadow-lg"
-              onClick={(e) => dec(e, 20)}
+              // onClick={(e) => dec(e, 20)}
             >
               <img src={Spotify} alt="Company Logo" className="h-48" />
               <div className="p-8">
@@ -89,7 +89,7 @@ const Rewards = () => {
 
             <div
               className="bg-primary-gray rounded-lg overflow-hidden shadow-lg"
-              onClick={(e) => dec(e, 100)}
+              // onClick={(e) => dec(e, 100)}
             >
               <img src={Zomato} alt="Company Logo" className="h-48" />
               <div className="p-8">
@@ -104,7 +104,7 @@ const Rewards = () => {
             </div>
           </div>
         </div>
-      )}
+      {/* )} */}
     </div>
   );
 };
