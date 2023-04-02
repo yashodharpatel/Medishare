@@ -38,14 +38,19 @@ const PostMedicine = () => {
 
     try {
       storage
-        .ref(`/pictures/eUtpuEjeBJY4jvxYJtWMfA0Aten1/${medicineName}`)
+        .ref(`/pictures/Xn8z9G8L8Bde2tql8DazQI1U7Na2/${medicineName}`)
         .put(blob)
         .on("state_changed", () => {
           // Getting Download Link
+          // storage
+          //   .ref("pictures")
+          //   .child("eUtpuEjeBJY4jvxYJtWMfA0Aten1")
+          //   .child(medicineName)
+          //   .getDownloadURL()
+          // .then((url) => {
           storage
-            .ref("pictures")
-            .child("eUtpuEjeBJY4jvxYJtWMfA0Aten1")
-            .child(medicineName)
+            .ref()
+            .child(`/pictures/Xn8z9G8L8Bde2tql8DazQI1U7Na2/${medicineName}`)
             .getDownloadURL()
             .then((url) => {
               addmedicine(
@@ -100,7 +105,9 @@ const PostMedicine = () => {
 
   const submitMedicines = () => {
     if (medicines.length !== 0) {
-      database.ref("ngos/" + "eUtpuEjeBJY4jvxYJtWMfA0Aten1").update({ medicines: medicines });
+      database
+        .ref("ngos/" + "Xn8z9G8L8Bde2tql8DazQI1U7Na2")
+        .update({ medicines: medicines });
       // medicines = [];
     }
   };
@@ -246,12 +253,14 @@ const PostMedicine = () => {
               medicines.map((medicine) => {
                 return (
                   <div className="mb-3">
-                    <h4 className="font-bold" id={medicine.sno}>{medicine.name}</h4>
+                    <h4 className="font-bold" id={medicine.sno}>
+                      {medicine.name}
+                    </h4>
                     <p>Count = {medicine.count}</p>
                     <p>Expiry = {medicine.date}</p>
                     <p>Description = {medicine.desc}</p>
                     <button
-                     class="bg-red-500 hover:bg-red-700 text-white p-1 border border-red-700 rounded my-2"
+                      class="bg-red-500 hover:bg-red-700 text-white p-1 border border-red-700 rounded my-2"
                       onClick={() => {
                         onDelete(medicine);
                       }}
@@ -263,25 +272,30 @@ const PostMedicine = () => {
                 );
               })
             )}
-            {medicines.length!==0 ? <>
-            <div className="mt-4">Select a NGO to donate medicine</div>
-            <select className="rounded-xl border border-purple w-100 p-1 mb-4" id="ngo-selected">
-              {ngonames.map((x, y) => (
-                <option value={x} key={y}>
-                  {x}
-                </option>
-              ))}
-            </select>
-
-            <button
-              type="submit"
-              className="btn-primary"
-              onClick={() => {
-                submitMedicines();
-              }}
-            >
-              Submit
-            </button> </>: null }
+            {medicines.length !== 0 ? (
+              <>
+                <div className="mt-4">Select a NGO to donate medicine</div>
+                <select
+                  className="rounded-xl border border-purple w-100 p-1 mb-4"
+                  id="ngo-selected"
+                >
+                  {ngonames.map((x, y) => (
+                    <option value={x} key={y}>
+                      {x}
+                    </option>
+                  ))}
+                </select>
+                <button
+                  type="submit"
+                  className="btn-primary"
+                  onClick={() => {
+                    submitMedicines();
+                  }}
+                >
+                  Submit
+                </button>{" "}
+              </>
+            ) : null}
           </div>
         </div>
       </div>

@@ -9,6 +9,7 @@ import plus from "../assets/PlusSignsMirror.svg";
 
 import { Link } from "react-router-dom";
 import { useAuth } from "../Contexts/Authcontext";
+import logo from "../assets/logo.jpeg";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -56,12 +57,9 @@ const Login = () => {
       await login(emailRef.current.value, passwordRef.current.value);
       // history.push("/dashboard/");
       // document.querySelector(".modal-backdrop").remove();
-      if(role == "ngo") {
-      navigate("/fetchallmedicinengo");
-
-        
+      if (role == "ngo") {
+        navigate("/fetchallmedicinengo");
       } else {
-
         navigate("/clienthome");
       }
     } catch {
@@ -73,17 +71,26 @@ const Login = () => {
 
   return (
     <div className="h-screen formClass overflow-y-hidden">
+      <div style={{ marginLeft: "100px", position: "absolute" }}>
+        <img src={logo} alt="alternate" style={{ width: "35%" }} />
+      </div>
       <div className="flex">
         <div className="w-1/2 overflow-y-hidden">
-          <img src={authImgMain} alt="alternate" className="w-full h-3/4 m-8" />
+          <img
+            src={authImgMain}
+            alt="alternate"
+            className="ml-8"
+            style={{ marginTop: "6rem" }}
+          />
         </div>
         <div className="flex-1 h-screen w-50% justify-center content-center ml-12 z-10">
           <div className="flex flex-col w-full h-screen justify-center content-center">
             <div className="ml-4 w-[500px] bg-white h-[550px] my-auto rounded-3xl shadow-primary-sd justify-center content-center text-left overflow-y-hidden">
               <div className="p-10 ml-5">
-                <p className="font-ourfont font-bold text-3xl overflow-y-hidden mt-11 text-primary-black">
-                  Log In
+                <p className="font-ourfont font-bold text-3xl overflow-y-hidden text-primary-black">
+                  Log In at care-swap
                 </p>
+                
                 {/* <p className="mt-3 font-ourfont font-normal text-sm text-subtext">
                   New to our site?
                 </p>
@@ -94,11 +101,7 @@ const Login = () => {
                   Register Here!
                 </button> */}
                 <br />
-                {error && (
-                  <div className="pt-2 text-danger">
-                    {error}
-                  </div>
-                )}
+                {error && <div className="pt-2 text-danger">{error}</div>}
                 <form className="w-full max-w-sm mt-5" onSubmit={handleSubmit}>
                   <p className="font-medium">Email</p>
                   <div className="flex items-center border-b-2 border-ourmedpurp ">

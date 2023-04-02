@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import img from "../assets/medicines/crocin.jpg";
+import img from "../assets/medicines/omee.jpg";
 
 const MedicineCard = (props) => {
   const navigate = useNavigate();

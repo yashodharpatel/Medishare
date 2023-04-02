@@ -50,7 +50,7 @@ const Rewards = () => {
     <div>
       <Navbar />
       {/* {points && ( */}
-        <div>
+        <div className="flex items-center justify-center">
           {/* <div className="font-bold text-4xl text-center py-12">
             Your Rewards {points}
           </div> */}
