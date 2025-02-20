@@ -1,70 +1,61 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ # Medishare - Community Pharmacy Application
+ 
+## Overview
+**Objective:** Develop an application to collect and distribute unused medicines to needy people while considering their expiry dates.
+ 
+**Goal:** Create a "Community Pharmacy" that operates free of cost to increase accessibility to necessary medications for underprivileged communities.
+ 
+## Technology Stack
+- **Frontend:** React.js, JavaScript, Custom CSS, Bootstrap
+- **Backend:** Firebase for database management
+ 
+## Key Contributions
+### Medicine Collection and Distribution
+- Collect unused medicines from households.
+- Distribute collected medicines to needy individuals.
+ 
+### Medicine Bank
+- Establish a medicine bank to fulfill community requirements.
+- Manage and track the usage of collected medicines.
+ 
+### Volunteer Management
+- Portal for appointing and managing volunteers.
+- Facilitate volunteers to collect unused medicines from elderly individuals.
+ 
+### Medicine Management
+- Segregate and manage collected medicines.
+- Implement a tracking system to monitor medicine usage.
+ 
+### Consumer Protection
+- Cap the quantity of medicine supplied to avoid misuse.
+- Dashboard to display medicine usage for specific illnesses and expiry dates.
+ 
+### Community Engagement
+- Create a local community involving doctors to support the NGO.
+- Connect users with relevant NGOs and charitable trusts.
+ 
+### Communication and Alerts
+- Broadcast medicine requirements within connected NGOs.
+- Implement an expiry date alert feature.
+ 
+### Incentive System
+- Introduce a reward system for medicine donors to incentivize contributions.
+ 
+## Impact
+- Significant cost savings for the pharmaceutical industry by reducing expired drug wastage.
+- Increased accessibility to necessary medications for underprivileged communities.
+- Enhanced community engagement and support through volunteer and doctor involvement.
+ 
+## Challenges
+- Ensuring the authenticity and safety of collected medicines.
+- Managing logistics and coordination among volunteers and NGOs.
+- Maintaining up-to-date records of medicine inventory and expiry dates.
+ 
+## Future Enhancements
+- Expand the reach of the application to more communities and NGOs.
+- Integrate with healthcare providers for better medicine management.
+- Develop a mobile application for easier access and management.
+ 
+## Summary
+Medishare is a community pharmacy application designed to collect and distribute unused medicines to those in need, ensuring the safety and authenticity of the medicines. With features like a medicine bank, volunteer management, consumer protection, and community engagement, Medishare aims to reduce drug wastage and improve access to medications for underprivileged communities.
+ 
